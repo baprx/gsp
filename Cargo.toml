@@ -19,6 +19,7 @@ readme = "README.md"
 
 [dependencies]
 clap = { version = "4.1.8", features = ["derive"] }
+clap_complete = "4.1.4"
 log = "0.4.17"
 prettytable = "0.10.0"
 rust-ini = "0.18.0"

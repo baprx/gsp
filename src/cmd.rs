@@ -1,4 +1,7 @@
-use clap::{Parser, Subcommand};
+use std::io;
+
+use clap::{Command, CommandFactory, Parser, Subcommand};
+use clap_complete::{generate, Generator, Shell};
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -22,12 +25,28 @@ pub struct Cli {
 pub enum Commands {
     /// Print the project which currently used
     Current,
+
     /// List the available projects
     List,
+
     /// Refresh the list of available projects
     Refresh,
+
+    /// Generate shell completions
+    GenerateCompletions {
+        #[arg(long, value_enum)]
+        shell: Shell,
+    },
 }
 
 pub fn parse() -> Cli {
     Cli::parse()
+}
+
+pub fn command() -> Command {
+    Cli::command()
+}
+
+pub fn print_completions<G: Generator>(gen: G, cmd: &mut Command) {
+    generate(gen, cmd, cmd.get_name().to_string(), &mut io::stdout());
 }

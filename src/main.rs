@@ -199,6 +199,10 @@ fn main() {
         ),
         Some(cmd::Commands::Refresh) => refresh_projects(is_verbose),
         Some(cmd::Commands::List) => list_projects(is_verbose, cli.refresh),
+        Some(cmd::Commands::GenerateCompletions { shell }) => {
+            let mut command = cmd::command();
+            cmd::print_completions(shell.to_owned(), &mut command);
+        }
         None => project_switch(is_verbose, cli.refresh, cli.project.unwrap_or_default()),
     }
 }
