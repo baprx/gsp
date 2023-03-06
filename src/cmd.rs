@@ -9,14 +9,19 @@ pub struct Cli {
     /// Set the log level
     #[arg(long, default_value = "INFO", global = true, value_parser = ["TRACE", "DEBUG", "INFO", "WARN", "ERROR"])]
     pub log_level: String,
+
+    /// Part or entire project ID
+    pub project: Option<String>,
 }
 
 #[derive(Subcommand)]
 pub enum Commands {
-    /// Refresh the list of available projects
-    Refresh,
     /// Print the project which currently used
     Current,
+    /// List the available projects
+    List,
+    /// Refresh the list of available projects
+    Refresh,
 }
 
 pub fn parse() -> Cli {
