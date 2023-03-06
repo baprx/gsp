@@ -1,0 +1,24 @@
+[package]
+name = "gsp"
+version = "0.1.0"
+edition = "2021"
+
+authors = ["Baptiste Roux"]
+
+description = """
+Simple CLI to switch between gcloud projects.
+"""
+
+keywords = ["gcloud", "gcp"]
+categories = ["command-line-utilities", "config"]
+
+homepage = "https://github.com/BapRx/gsp"
+repository = "https://github.com/BapRx/gsp"
+
+readme = "README.md"
+
+[dependencies]
+clap = { version = "4.1.8", features = ["derive"] }
+log = "0.4.17"
+rust-ini = "0.18.0"
+simplelog = { version = "0.12.1", features = ["paris"] }
