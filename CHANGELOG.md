@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1] - 2023-03-06
+
+### Miscellaneous Tasks
+
+- Add license to cargo.toml
+
 ## [0.1.0] - 2023-03-06
 
 ### Documentation
@@ -17,3 +23,5 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous Tasks
 
 - Exit without returning a project upon user abort
+- Configure Github actions; Generate CHANGELOG.md
+

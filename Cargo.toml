@@ -14,7 +14,7 @@ categories = ["command-line-utilities", "config"]
 
 homepage = "https://github.com/BapRx/gsp"
 repository = "https://github.com/BapRx/gsp"
-
+license = "MIT"
 readme = "README.md"
 
 [dependencies]
