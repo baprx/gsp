@@ -11,6 +11,7 @@ use skim::prelude::*;
 use std::fs;
 use std::fs::File;
 use std::path::PathBuf;
+use std::process;
 use std::str::FromStr;
 
 #[derive(Deserialize, Debug, Clone)]
@@ -146,7 +147,10 @@ fn find_match(projects: Vec<Projects>, project_from_user: String) -> String {
     }
     drop(tx);
     let selected_items = Skim::run_with(&options, Some(rx))
-        .map(|out| out.selected_items)
+        .map(|out| match out.is_abort {
+            true => process::exit(0),
+            false => out.selected_items,
+        })
         .unwrap_or_else(Vec::new)
         .iter()
         .map(|selected_item| {
