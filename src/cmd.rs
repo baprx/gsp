@@ -10,6 +10,10 @@ pub struct Cli {
     #[arg(long, default_value = "INFO", global = true, value_parser = ["TRACE", "DEBUG", "INFO", "WARN", "ERROR"])]
     pub log_level: String,
 
+    /// Force a cache refresh then run the requested command
+    #[arg(long, default_value_t = false, global = true)]
+    pub refresh: bool,
+
     /// Part or entire project ID
     pub project: Option<String>,
 }

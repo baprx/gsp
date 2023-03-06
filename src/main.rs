@@ -118,7 +118,10 @@ fn load_cache(verbose: bool) -> Vec<Projects> {
     serde_json::from_str(cache_str.as_str()).expect("JSON was not well-formatted")
 }
 
-fn list_projects(verbose: bool) {
+fn list_projects(verbose: bool, refresh: bool) {
+    if refresh {
+        refresh_projects(verbose)
+    }
     let projects = load_cache(verbose);
     let mut table = Table::new();
 
@@ -158,7 +161,10 @@ fn find_match(projects: Vec<Projects>, project_from_user: String) -> String {
     selected_items.first().unwrap().project_id.clone()
 }
 
-fn project_switch(verbose: bool, project_from_user: String) {
+fn project_switch(verbose: bool, refresh: bool, project_from_user: String) {
+    if refresh {
+        refresh_projects(verbose)
+    }
     let projects = load_cache(verbose);
     let project_id = find_match(projects, project_from_user);
     let success = utils::run_gcloud(
@@ -192,7 +198,7 @@ fn main() {
             get_current_project()
         ),
         Some(cmd::Commands::Refresh) => refresh_projects(is_verbose),
-        Some(cmd::Commands::List) => list_projects(is_verbose),
-        None => project_switch(is_verbose, cli.project.unwrap_or_default()),
+        Some(cmd::Commands::List) => list_projects(is_verbose, cli.refresh),
+        None => project_switch(is_verbose, cli.refresh, cli.project.unwrap_or_default()),
     }
 }
