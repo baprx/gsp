@@ -171,16 +171,23 @@ fn project_switch(verbose: bool, refresh: bool, project_from_user: Vec<String>) 
     }
     let projects = load_cache(verbose);
     let project_id = find_match(projects, project_from_user.join(" "));
-    let success = utils::run_gcloud(
-        verbose,
-        None,
-        vec!["config", "set", "project", project_id.as_str()],
-    );
-    if success {
-        info!("Successfully switched to {}.", project_id)
+    if project_id != get_current_project() {
+        let success = utils::run_gcloud(
+            verbose,
+            None,
+            vec!["config", "set", "project", project_id.as_str()],
+        );
+        if success {
+            info!("Successfully switched to {}.", project_id)
+        } else {
+            panic!("Error while switching project.")
+        };
     } else {
-        panic!("Error while switching project.")
-    };
+        info!(
+            "The current and target project ID are the same: <b>{}</b>",
+            project_id
+        )
+    }
 }
 
 fn main() {
