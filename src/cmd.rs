@@ -18,7 +18,7 @@ pub struct Cli {
     pub refresh: bool,
 
     /// Part or entire project ID
-    pub project: Option<String>,
+    pub project: Option<Vec<String>>,
 }
 
 #[derive(Subcommand)]

@@ -165,12 +165,12 @@ fn find_match(projects: Vec<Projects>, project_from_user: String) -> String {
     selected_items.first().unwrap().project_id.clone()
 }
 
-fn project_switch(verbose: bool, refresh: bool, project_from_user: String) {
+fn project_switch(verbose: bool, refresh: bool, project_from_user: Vec<String>) {
     if refresh {
         refresh_projects(verbose)
     }
     let projects = load_cache(verbose);
-    let project_id = find_match(projects, project_from_user);
+    let project_id = find_match(projects, project_from_user.join(" "));
     let success = utils::run_gcloud(
         verbose,
         None,
