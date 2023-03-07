@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.2] - 2023-03-07
+
+### CI/CD
+
+- Add Cargo tests
+
+### Miscellaneous Tasks
+
+- Allow providing multi string project ID, (eg: proj prod)
+- Don't switch project if current == target project
+- Upload Cargo.lock
+
 ## [0.1.1] - 2023-03-06
 
 ### Miscellaneous Tasks
