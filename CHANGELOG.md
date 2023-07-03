@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
 - Update rust crate clap_complete to 4.3.1
 - Update rust crate rust-ini to 0.19.0
 
+### Miscellaneous Tasks
+
+- Update changelog
+
 ## [0.1.2] - 2023-03-07
 
 ### CI/CD
