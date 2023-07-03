@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2023-07-03
+
+### Bug Fixes
+
+- Update rust crate log to 0.4.19
+- Update rust crate serde to 1.0.164
+- Update rust crate serde_json to 1.0.99
+- Update rust crate clap to 4.3.10
+- Update rust crate clap_complete to 4.3.1
+- Update rust crate rust-ini to 0.19.0
+
 ## [0.1.2] - 2023-03-07
 
 ### CI/CD
@@ -13,6 +24,7 @@ All notable changes to this project will be documented in this file.
 - Allow providing multi string project ID, (eg: proj prod)
 - Don't switch project if current == target project
 - Upload Cargo.lock
+- Bump version 0.1.2
 
 ## [0.1.1] - 2023-03-06
 
