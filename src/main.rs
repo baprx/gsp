@@ -151,7 +151,7 @@ fn find_match(projects: Vec<Projects>, project_from_user: String) -> String {
             true => process::exit(0),
             false => out.selected_items,
         })
-        .unwrap_or_else(Vec::new)
+        .unwrap_or_default()
         .iter()
         .map(|selected_item| {
             (**selected_item)
