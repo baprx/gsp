@@ -1,0 +1,3 @@
+[workspace]
+changelog_config = "cliff.toml" # use a custom git-cliff configuration
+pr_labels = ["release"]         # add the `release` label to the release Pull Request
