@@ -23,7 +23,7 @@ clap_complete = "4.4.9"
 log = "0.4.20"
 prettytable = "0.10.0"
 rust-ini = "0.20.0"
-serde_json = "1.0.112"
+serde_json = "1.0.113"
 serde = { version = "1.0.196", features = ["derive"] }
 simplelog = { version = "0.12.1", features = ["paris"] }
 skim = "0.10.4"
