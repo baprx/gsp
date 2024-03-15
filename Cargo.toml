@@ -18,7 +18,7 @@ license = "MIT"
 readme = "README.md"
 
 [dependencies]
-clap = { version = "4.5.2", features = ["derive"] }
+clap = { version = "4.5.3", features = ["derive"] }
 clap_complete = "4.5.1"
 log = "0.4.21"
 prettytable = "0.10.0"
