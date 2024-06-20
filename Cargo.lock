@@ -572,7 +572,7 @@ dependencies = [
 
 [[package]]
 name = "gsp"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "clap 4.5.7",
  "clap_complete",
