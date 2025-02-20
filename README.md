@@ -49,5 +49,5 @@ The cache contains the list of available projects and can be refeshed by using t
 ## Generate completions
 
 ```bash
-gsp generate-completions --shell zsh > ${ZSH}/completions/_gsp
+source <(gsp generate-completions --shell zsh)
 ```

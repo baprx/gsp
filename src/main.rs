@@ -136,9 +136,9 @@ fn list_projects(verbose: bool, refresh: bool) {
 
 fn find_match(projects: Vec<Projects>, project_from_user: String) -> String {
     let options = SkimOptionsBuilder::default()
-        .query(Some(&project_from_user))
-        .preview(Some(""))
-        .select1(true)
+        .query(Some(project_from_user))
+        .preview(Some("".to_string()))
+        .select_1(true)
         .build()
         .unwrap();
     let (tx, rx): (SkimItemSender, SkimItemReceiver) = unbounded();
