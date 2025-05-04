@@ -699,17 +699,6 @@ checksum = "78ca9ab1a0babb1e7d5695e3530886289c18cf2f87ec19a575a0abdce112e3a3"
 
 [[package]]
 name = "nix"
-version = "0.24.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fa52e972a9a719cecb6864fb88568781eb706bac2cd1d4f04a648542dbf78069"
-dependencies = [
- "bitflags 1.3.2",
- "cfg-if",
- "libc",
-]
-
-[[package]]
-name = "nix"
 version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "71e2746dc3a24dd78b3cfcb7be93368c6de9963d30f43a6a73998a9cf4b17b46"
@@ -1011,9 +1000,9 @@ dependencies = [
 
 [[package]]
 name = "skim"
-version = "0.16.2"
+version = "0.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8e29ac781a242d0cc04f1bbf5cc3522ef2205b778fdc8c2a6f293eef34467968"
+checksum = "0b4c4e44932ab2aebfc250394759d98cb618c5fce6ce2824f35aa83f538113b8"
 dependencies = [
  "beef",
  "bitflags 1.3.2",
@@ -1026,18 +1015,40 @@ dependencies = [
  "fuzzy-matcher",
  "indexmap",
  "log",
- "nix 0.29.0",
+ "nix",
  "rand",
  "rayon",
  "regex",
  "shell-quote",
  "shlex",
+ "skim-common",
+ "skim-tuikit",
  "time",
  "timer",
- "tuikit",
  "unicode-width 0.2.0",
  "vte",
  "which",
+]
+
+[[package]]
+name = "skim-common"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "708845c890c4363cfdc79fc1022ca2cc0e7b3cb72b3a1829cd2235d6db59ef4c"
+
+[[package]]
+name = "skim-tuikit"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3eb6c6151004fb096e41d842dafa0ef4cce992f02a4737cad0904b4c3f73eabc"
+dependencies = [
+ "bitflags 1.3.2",
+ "lazy_static",
+ "log",
+ "nix",
+ "skim-common",
+ "term",
+ "unicode-width 0.2.0",
 ]
 
 [[package]]
@@ -1163,20 +1174,6 @@ name = "trim-in-place"
 version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "343e926fc669bc8cde4fa3129ab681c63671bae288b1f1081ceee6d9d37904fc"
-
-[[package]]
-name = "tuikit"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5e19c6ab038babee3d50c8c12ff8b910bdb2196f62278776422f50390d8e53d8"
-dependencies = [
- "bitflags 1.3.2",
- "lazy_static",
- "log",
- "nix 0.24.3",
- "term",
- "unicode-width 0.1.14",
-]
 
 [[package]]
 name = "unicase"
