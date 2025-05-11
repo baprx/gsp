@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.7] - 2025-05-11
+
+### Bug Fixes
+
+- Update rust crate skim to 0.17.0 ([#155](https://github.com/BapRx/gsp/issues/155))
+- Update rust crate skim to v0.17.2 ([#156](https://github.com/BapRx/gsp/issues/156))
+- Update rust crate clap_complete to v4.5.49 ([#157](https://github.com/BapRx/gsp/issues/157))
+- Update rust crate clap_complete to v4.5.50 ([#158](https://github.com/BapRx/gsp/issues/158))
+- Update rust crate clap to v4.5.38 ([#159](https://github.com/BapRx/gsp/issues/159))
+
 ## [0.1.6] - 2025-02-20
 
 ### Miscellaneous Tasks
