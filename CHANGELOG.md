@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.8] - 2025-09-21
+
+### Bug Fixes
+
+- Update rust crate skim to 0.18.0
+- Update rust crate clap_complete to v4.5.52 ([#165](https://github.com/BapRx/gsp/issues/165))
+- Update rust crate clap to v4.5.40 ([#166](https://github.com/BapRx/gsp/issues/166))
+- Update rust crate clap_complete to v4.5.54 ([#167](https://github.com/BapRx/gsp/issues/167))
+- Update rust crate skim to 0.20.0 ([#168](https://github.com/BapRx/gsp/issues/168))
+- Update rust crate skim to v0.20.5
+- Update rust crate serde_json to v1.0.143 ([#173](https://github.com/BapRx/gsp/issues/173))
+- Update rust crate clap to v4.5.46 ([#175](https://github.com/BapRx/gsp/issues/175))
+- Update rust crate rust-ini to v0.21.3 ([#176](https://github.com/BapRx/gsp/issues/176))
+- Update rust crate clap to v4.5.47 ([#177](https://github.com/BapRx/gsp/issues/177))
+- Update rust crate log to v0.4.28 ([#178](https://github.com/BapRx/gsp/issues/178))
+- Update rust crate serde to v1.0.221 ([#179](https://github.com/BapRx/gsp/issues/179))
+- Update rust crate serde_json to v1.0.144 ([#180](https://github.com/BapRx/gsp/issues/180))
+- Update rust crate serde_json to v1.0.145 ([#181](https://github.com/BapRx/gsp/issues/181))
+- Update rust crate serde to v1.0.223 ([#182](https://github.com/BapRx/gsp/issues/182))
+- Update rust crate clap_complete to v4.5.58 ([#184](https://github.com/BapRx/gsp/issues/184))
+- Update rust crate serde to v1.0.225 ([#183](https://github.com/BapRx/gsp/issues/183))
+- Update rust crate clap to v4.5.48 ([#185](https://github.com/BapRx/gsp/issues/185))
+- Update rust crate serde to v1.0.226 ([#186](https://github.com/BapRx/gsp/issues/186))
+
+### Miscellaneous Tasks
+
+- Update actions/checkout action to v5
+
+
 ## [0.1.7] - 2025-05-11
 
 ### Bug Fixes
