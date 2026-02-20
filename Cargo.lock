@@ -536,7 +536,7 @@ dependencies = [
 
 [[package]]
 name = "gsp"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
  "clap",
  "clap_complete",
