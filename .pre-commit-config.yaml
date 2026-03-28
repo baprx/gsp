@@ -1,0 +1,37 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        exclude: /secrets
+      - id: check-added-large-files
+      - id: check-yaml
+        args:
+          - --allow-multiple-documents
+        exclude: /templates|/secrets|helmfile.yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-shebang-scripts-are-executable
+        exclude: .+\.j2$
+
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.4.0
+    hooks:
+      - id: conventional-pre-commit
+
+  - repo: local
+    hooks:
+      - id: cargo-fmt
+        name: cargo fmt
+        entry: cargo fmt
+        language: system
+        pass_filenames: false
+        types: [rust]
+
+      - id: cargo-clippy
+        name: cargo clippy
+        entry: cargo clippy -- -D warnings
+        language: system
+        pass_filenames: false
+        types: [rust]
