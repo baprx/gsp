@@ -4,6 +4,20 @@ A CLI tool to easily switch between Google gcloud projects inspired by the late 
 
 This is more a pretext to play with Rust than anything else but I use this tool a lot and I will continue to maintain it.
 
+## Installation
+
+### From crates.io
+
+```sh
+cargo install gsp
+```
+
+### Using mise
+
+```sh
+mise use -g cargo:gsp
+```
+
 ## Usage
 
 ```sh
