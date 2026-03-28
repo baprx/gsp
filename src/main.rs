@@ -85,34 +85,23 @@ fn refresh_projects(_verbose: bool) {
     fs::create_dir_all(cache_file_path.parent().unwrap())
         .expect("Error while creating the cache directory.");
 
-    let output = std::process::Command::new("gcloud")
-        .args([
-            "projects",
-            "list",
-            "--format",
-            "json(name,projectId,projectNumber)",
-        ])
-        .output();
-
-    let output = match output {
-        Ok(out) => out,
-        Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
-            panic!("Command 'gcloud' not found, please make sure it is installed and in the PATH.");
-        }
-        Err(e) => panic!("Error while running gcloud command: {:?}", e),
-    };
+    let output = utils::run_gcloud_output(vec![
+        "projects",
+        "list",
+        "--format",
+        "json(name,projectId,projectNumber)",
+    ]);
 
     if !output.status.success() {
         eprintln!("{}", String::from_utf8_lossy(&output.stderr));
         panic!("Failed to refresh project cache. Run 'gcloud auth login' if not authenticated.");
     }
 
-    let projects_json = output.stdout;
-    if projects_json.is_empty() {
+    if output.stdout.is_empty() {
         panic!("gcloud returned no projects. Ensure you have access to at least one Google Cloud project.");
     }
 
-    fs::write(&cache_file_path, projects_json).expect("Failed to write cache file.");
+    fs::write(&cache_file_path, output.stdout).expect("Failed to write cache file.");
     info!("The cache was successfully refreshed.")
 }
 
@@ -124,23 +113,21 @@ fn load_cache(verbose: bool) -> Vec<Projects> {
     if !PathBuf::from(&cache_file_path).exists() {
         refresh_projects(verbose)
     }
-    let cache_str: String = match fs::read_to_string(&cache_file_path) {
+    let cache_str = match fs::read_to_string(&cache_file_path) {
         Ok(content) => content,
         Err(error) => panic!("Problem opening the file: {:?}", error),
     };
     if cache_str.is_empty() {
         warn!("Cache file is empty, attempting to refresh...");
         refresh_projects(verbose);
-        let cache_str = match fs::read_to_string(&cache_file_path) {
-            Ok(content) => content,
-            Err(error) => panic!("Problem opening the file: {:?}", error),
-        };
+        let cache_str = fs::read_to_string(&cache_file_path)
+            .unwrap_or_else(|error| panic!("Problem opening the file: {:?}", error));
         if cache_str.is_empty() {
             panic!("Cache file is still empty. Run 'gcloud auth login' to authenticate first.")
         }
-        serde_json::from_str(cache_str.as_str()).expect("JSON was not well-formatted")
+        serde_json::from_str(&cache_str).expect("JSON was not well-formatted")
     } else {
-        serde_json::from_str(cache_str.as_str()).expect("JSON was not well-formatted")
+        serde_json::from_str(&cache_str).expect("JSON was not well-formatted")
     }
 }
 
@@ -187,7 +174,6 @@ fn find_match(projects: Vec<Projects>, project_from_user: String) -> String {
         panic!("No project selected. Please select a project from the list.");
     }
 
-    // Get the text representation of the selected item (which is the project_id)
     selected_items.first().unwrap().text().to_string()
 }
 
@@ -197,13 +183,9 @@ fn project_switch(verbose: bool, refresh: bool, project_from_user: Vec<String>) 
     }
     let projects = load_cache(verbose);
     let project_id = find_match(projects, project_from_user.join(" "));
-    let current_project = get_current_project();
-    if current_project.as_ref() != Some(&project_id) {
-        let success = utils::run_gcloud(
-            verbose,
-            None,
-            vec!["config", "set", "project", project_id.as_str()],
-        );
+    if get_current_project().as_ref() != Some(&project_id) {
+        let success =
+            utils::run_gcloud(None, vec!["config", "set", "project", project_id.as_str()]);
         if success {
             info!("Successfully switched to {}.", project_id)
         } else {
@@ -228,12 +210,15 @@ fn main() {
     let is_verbose: bool = LevelFilter::ge(&log_level, &LevelFilter::Debug);
     debug!("Log level: {}", log_level.as_str());
     match &cli.command {
-        Some(cmd::Commands::Current) => match get_current_project() {
-            Some(project) => info!("Current project: <green><b>{}</b></>", project),
-            None => warn!(
-                "No current project set. Run 'gcloud config set project PROJECT_ID' to set one."
-            ),
-        },
+        Some(cmd::Commands::Current) => {
+            let current = get_current_project();
+            match current {
+                Some(project) => info!("Current project: <green><b>{}</b></>", project),
+                None => warn!(
+                    "No current project set. Run 'gcloud config set project PROJECT_ID' to set one."
+                ),
+            }
+        }
         Some(cmd::Commands::Refresh) => refresh_projects(is_verbose),
         Some(cmd::Commands::List) => list_projects(is_verbose, cli.refresh),
         Some(cmd::Commands::GenerateCompletions { shell }) => {

@@ -1,13 +1,13 @@
 use std::fs::File;
 use std::path::PathBuf;
-use std::process::{Command, Stdio};
+use std::process::{Command, Output, Stdio};
 
 pub fn home_dir() -> PathBuf {
     let home = std::env::var("HOME").expect("$HOME not found");
     PathBuf::from(home)
 }
 
-pub fn run_gcloud(_verbose: bool, output: Option<File>, args: Vec<&str>) -> bool {
+pub fn run_gcloud(output: Option<File>, args: Vec<&str>) -> bool {
     let result = Command::new("gcloud")
         .args(args)
         .stdout(if let Some(file) = output {
@@ -37,4 +37,19 @@ pub fn run_gcloud(_verbose: bool, output: Option<File>, args: Vec<&str>) -> bool
     }
 
     exit_status.success()
+}
+
+pub fn run_gcloud_output(args: Vec<&str>) -> Output {
+    let output = Command::new("gcloud")
+        .args(args)
+        .stderr(Stdio::piped())
+        .output();
+
+    match output {
+        Ok(out) => out,
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
+            panic!("Command 'gcloud' not found, please make sure it is installed and in the PATH.");
+        }
+        Err(e) => panic!("Error while running gcloud command: {:?}", e),
+    }
 }
