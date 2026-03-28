@@ -189,4 +189,3 @@ All notable changes to this project will be documented in this file.
 
 - Exit without returning a project upon user abort
 - Configure Github actions; Generate CHANGELOG.md
-

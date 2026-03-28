@@ -7,7 +7,7 @@ pub fn home_dir() -> PathBuf {
     PathBuf::from(home)
 }
 
-pub fn run_gcloud(verbose: bool, output: Option<File>, args: Vec<&str>) -> bool {
+pub fn run_gcloud(_verbose: bool, output: Option<File>, args: Vec<&str>) -> bool {
     let result = Command::new("gcloud")
         .args(args)
         .stdout(if let Some(file) = output {
@@ -15,11 +15,7 @@ pub fn run_gcloud(verbose: bool, output: Option<File>, args: Vec<&str>) -> bool 
         } else {
             Stdio::inherit()
         })
-        .stderr(if verbose {
-            Stdio::inherit()
-        } else {
-            Stdio::null()
-        })
+        .stderr(Stdio::piped())
         .spawn();
     let mut child = match result {
         Ok(_) => result.unwrap(),
@@ -28,12 +24,17 @@ pub fn run_gcloud(verbose: bool, output: Option<File>, args: Vec<&str>) -> bool 
         }
         Err(e) => panic!("Error while running gcloud command: {:?}", e),
     };
-    match child.try_wait() {
-        Ok(Some(status)) => status.success(),
-        Ok(None) => {
-            let res = child.wait();
-            res.unwrap().success()
-        }
+    let exit_status = match child.try_wait() {
+        Ok(Some(status)) => status,
+        Ok(None) => child.wait().unwrap(),
         Err(e) => panic!("Error attempting to wait: {e}"),
+    };
+
+    if !exit_status.success() {
+        if let Ok(stderr) = std::io::read_to_string(child.stderr.take().unwrap()) {
+            eprintln!("{}", stderr);
+        }
     }
+
+    exit_status.success()
 }

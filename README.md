@@ -6,7 +6,7 @@ This is more a pretext to play with Rust than anything else but I use this tool 
 
 ## Usage
 
-```bash
+```sh
 ❯ gsp help
 Simple CLI to switch between gcloud projects.
 
@@ -36,7 +36,7 @@ A cache file is created in order to avoid refreshing the project list every time
 
 The cache contains the list of available projects and can be refeshed by using the `gsp refresh` command or by adding the `--refresh` argument to any other command:
 
-```bash
+```sh
 ❯ gsp list --refresh
 [INFO] The cache was successfully refreshed.
 +----------------------------------+----------------+--------------------------------+
@@ -48,6 +48,6 @@ The cache contains the list of available projects and can be refeshed by using t
 
 ## Generate completions
 
-```bash
-source <(gsp generate-completions --shell zsh)
+```sh
+gsp generate-completions --shell fish # or zsh / bash
 ```
