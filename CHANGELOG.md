@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.9] - 2026-04-16
+
+### CI/CD
+
+- Add test job to Rust workflow
+
+### Documentation
+
+- Add installation instructions
+
+### Miscellaneous Tasks
+
+- Update rust crate skim to v4.2.0 ([#223](https://github.com/BapRx/gsp/issues/223))
+- Update rust crate skim to v4.3.0 ([#224](https://github.com/BapRx/gsp/issues/224))
+- Update rust crate skim to v4.4.0 ([#225](https://github.com/BapRx/gsp/issues/225))
+- Update rust crate skim to v4.5.0 ([#226](https://github.com/BapRx/gsp/issues/226))
+- Update rust crate skim to v4.5.1 ([#227](https://github.com/BapRx/gsp/issues/227))
+- Update rust crate skim to v4.6.0 ([#228](https://github.com/BapRx/gsp/issues/228))
+- Update rust crate clap to v4.6.1 ([#229](https://github.com/BapRx/gsp/issues/229))
+- Update rust crate clap_complete to v4.6.2 ([#230](https://github.com/BapRx/gsp/issues/230))
+
+
 ## [0.1.8] - 2026-03-28
 
 ### Bug Fixes
