@@ -4,6 +4,7 @@
     "config:base",
     ":rebaseStalePrs"
   ],
+  "minimumReleaseAge": "14 days",
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
