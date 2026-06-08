@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.9] - 2026-06-08
+
+### CI/CD
+
+- Add test job to Rust workflow
+
+### Documentation
+
+- Add installation instructions
+
+### Miscellaneous Tasks
+
+- Update rust crate skim to v4.2.0 ([#223](https://github.com/BapRx/gsp/issues/223))
+- Update rust crate skim to v4.3.0 ([#224](https://github.com/BapRx/gsp/issues/224))
+- Update rust crate skim to v4.4.0 ([#225](https://github.com/BapRx/gsp/issues/225))
+- Update rust crate skim to v4.5.0 ([#226](https://github.com/BapRx/gsp/issues/226))
+- Update rust crate skim to v4.5.1 ([#227](https://github.com/BapRx/gsp/issues/227))
+- Update rust crate skim to v4.6.0 ([#228](https://github.com/BapRx/gsp/issues/228))
+- Update rust crate clap to v4.6.1 ([#229](https://github.com/BapRx/gsp/issues/229))
+- Update rust crate clap_complete to v4.6.2 ([#230](https://github.com/BapRx/gsp/issues/230))
+- Update rust crate skim to v4.6.1 ([#231](https://github.com/BapRx/gsp/issues/231))
+- Update rust crate clap_complete to v4.6.3 ([#232](https://github.com/BapRx/gsp/issues/232))
+- Update rust crate skim to v4.6.2 ([#233](https://github.com/BapRx/gsp/issues/233))
+- Update rust crate clap_complete to v4.6.4 ([#234](https://github.com/BapRx/gsp/issues/234))
+- Update rust crate clap_complete to v4.6.5 ([#235](https://github.com/BapRx/gsp/issues/235))
+- Update rust crate skim to v4.6.3 ([#236](https://github.com/BapRx/gsp/issues/236))
+- Update rust crate serde_json to v1.0.150 ([#237](https://github.com/BapRx/gsp/issues/237))
+- Update rust crate skim to v4.7.0 ([#238](https://github.com/BapRx/gsp/issues/238))
+- Update rust crate log to v0.4.30 ([#239](https://github.com/BapRx/gsp/issues/239))
+
+
 ## [0.1.8] - 2026-03-28
 
 ### Bug Fixes
